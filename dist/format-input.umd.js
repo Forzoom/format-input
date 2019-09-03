@@ -329,7 +329,7 @@
       }
 
       installed = true;
-      Vue.use('FormatInput', FormatInput);
+      Vue.component('FormatInput', FormatInput);
     }
 
     return install;

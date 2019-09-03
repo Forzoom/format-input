@@ -325,7 +325,7 @@ function install(Vue, options) {
   }
 
   installed = true;
-  Vue.use('FormatInput', FormatInput);
+  Vue.component('FormatInput', FormatInput);
 }
 
 module.exports = install;
