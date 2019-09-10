@@ -7,44 +7,38 @@ const replace = require('rollup-plugin-replace');
 const extensions = [ '.ts', '.js', ];
 
 module.exports = exports = [
-    // {
-    //     input: './src/index.js',
-    //     output: {
-    //         file: './dist/format-input.esm.js',
-    //         format: 'es',
-    //     },
-    //     plugins: [
-    //         replace({
-    //             'process.env.NODE_ENV': JSON.stringify('production'),
-    //         }),
-    //         commonjs(),
-    //         resolve(),
-    //         vue(),
-    //         babel({
-    //             extensions: extensions,
-    //             // exclude: 'node_modules/**',
-    //         }),
-    //     ],
-    // },
-    // {
-    //     input: './src/index.js',
-    //     output: {
-    //         file: './dist/format-input.cjs.js',
-    //         format: 'cjs',
-    //     },
-    //     plugins: [
-    //         replace({
-    //             'process.env.NODE_ENV': JSON.stringify('production'),
-    //         }),
-    //         commonjs(),
-    //         resolve(),
-    //         vue(),
-    //         babel({
-    //             extensions: extensions,
-    //             // exclude: 'node_modules/**',
-    //         }),
-    //     ],
-    // },
+    {
+        input: './src/index.js',
+        output: {
+            file: './dist/format-input.esm.js',
+            format: 'es',
+        },
+        plugins: [
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production'),
+            }),
+            commonjs(),
+            resolve(),
+            vue(),
+            babel(),
+        ],
+    },
+    {
+        input: './src/index.js',
+        output: {
+            file: './dist/format-input.cjs.js',
+            format: 'cjs',
+        },
+        plugins: [
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production'),
+            }),
+            commonjs(),
+            resolve(),
+            vue(),
+            babel(),
+        ],
+    },
     {
         input: './src/index.js',
         output: {
@@ -59,7 +53,7 @@ module.exports = exports = [
             commonjs(),
             resolve(),
             vue(),
-            // babel(),
+            babel(),
         ],
     },
 ];

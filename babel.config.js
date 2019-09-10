@@ -3,8 +3,8 @@ module.exports = exports = {
 		[
 			"@babel/preset-env",
 			{
-				targets: "last 20 versions",
 				useBuiltIns: 'entry',
+				corejs: '2.x',
 			},
 		],
 	]
