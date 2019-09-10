@@ -16,102 +16,94 @@
     //
     //
     //
+
     var script = {
-      name: 'FormatInput',
-      props: {
-        /** 值 */
-        value: {
-          type: String,
-          "default": ''
+        name: 'FormatInput',
+        props: {
+            /** 值 */
+            value: {
+                type: String,
+                default: '',
+            },
+            inputClass: {
+                type: [ Array, Object ],
+            },
+            /** 内容格式 */
+            format: {
+                type: String,
+                default: '34',
+            },
+            /** 是否禁用 */
+            disabled: {
+                type: Boolean,
+            },
+            /** 提示内容 */
+            placeholder: {
+                type: String,
+            },
+            /** 最大长度 */
+            maxlength: {
+                type: Number,
+            },
         },
-        inputClass: {
-          type: [Array, Object]
+        data() {
+            return {
+                content: '',
+            };
         },
-
-        /** 内容格式 */
-        format: {
-          type: String,
-          "default": '34'
+        computed: {
+            rawValue() {
+                return this.content.replace(/\s/g, '');
+            },
+            formatValue() {
+                let val = this.rawValue;
+                const parts = this.format.split('');
+                let index = 0;
+                let length = Number(parts[index]);
+                const result = [];
+                while (val.length > length) {
+                    result.push(val.substr(0, length));
+                    val = val.slice(length);
+                    length = Number(parts[Math.min(++index, parts.length - 1)]);
+                }
+                result.push(val);
+                return result.join(' ');
+            },
         },
-
-        /** 是否禁用 */
-        disabled: {
-          type: Boolean
+        watch: {
+            value(val) {
+                // tip: 需要保证value是字符串
+                this.content = val || '';
+            },
+            content(val) {
+                const rawValue = this.rawValue;
+                if (this.maxlength && rawValue.length > this.maxlength) {
+                    // tip: 为了保证watch能够被触发
+                    this.content = '';
+                    this.$nextTick(() => {
+                        this.content = rawValue.substr(0, this.maxlength);
+                    });
+                }
+            },
+            rawValue(val, old) {
+                if (val !== old) {
+                    this.$emit('input', this.rawValue);
+                }
+            },
+            formatValue(val, old) {
+                if (val !== old) {
+                    this.content = this.formatValue;
+                }
+            },
         },
-
-        /** 提示内容 */
-        placeholder: {
-          type: String
+        methods: {
+            onBlur() {
+                this.$emit('blur');
+            },
+            mounted() {
+                this.content = this.value;
+            },
         },
-
-        /** 最大长度 */
-        maxlength: {
-          type: Number
-        }
-      },
-      data: function data() {
-        return {
-          content: ''
-        };
-      },
-      computed: {
-        rawValue: function rawValue() {
-          return this.content.replace(/\s/g, '');
-        },
-        formatValue: function formatValue() {
-          var val = this.rawValue;
-          var parts = this.format.split('');
-          var index = 0;
-          var length = Number(parts[index]);
-          var result = [];
-
-          while (val.length > length) {
-            result.push(val.substr(0, length));
-            val = val.slice(length);
-            length = Number(parts[Math.min(++index, parts.length - 1)]);
-          }
-
-          result.push(val);
-          return result.join(' ');
-        }
-      },
-      watch: {
-        value: function value(val) {
-          // tip: 需要保证value是字符串
-          this.content = val || '';
-        },
-        content: function content(val) {
-          var _this = this;
-
-          var rawValue = this.rawValue;
-
-          if (this.maxlength && rawValue.length > this.maxlength) {
-            // tip: 为了保证watch能够被触发
-            this.content = '';
-            this.$nextTick(function () {
-              _this.content = rawValue.substr(0, _this.maxlength);
-            });
-          }
-        },
-        rawValue: function rawValue(val, old) {
-          if (val !== old) {
-            this.$emit('input', this.rawValue);
-          }
-        },
-        formatValue: function formatValue(val, old) {
-          if (val !== old) {
-            this.content = this.formatValue;
-          }
-        }
-      },
-      methods: {
-        onBlur: function onBlur() {
-          this.$emit('blur');
-        },
-        mounted: function mounted() {
-          this.content = this.value;
-        }
-      }
     };
 
     function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -322,14 +314,15 @@
         undefined
       );
 
-    var installed = false;
-    function install(Vue, options) {
-      if (installed) {
-        return;
-      }
+    let installed = false;
 
-      installed = true;
-      Vue.component('FormatInput', FormatInput);
+    function install(Vue, options) {
+    	if (installed) {
+    		return;
+    	}
+    	installed = true;
+
+    	Vue.component('FormatInput', FormatInput);
     }
 
     return install;

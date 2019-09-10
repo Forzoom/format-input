@@ -194,11 +194,13 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 var normalizeComponent_1 = normalizeComponent;
 
 var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+
 function createInjector(context) {
   return function (id, style) {
     return addStyle(id, style);
   };
 }
+
 var HEAD;
 var styles = {};
 
