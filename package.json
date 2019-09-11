@@ -27,5 +27,6 @@
   "peerDependencies": {
     "core-js": "2.x"
   },
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.ts",
+  "dependencies": {}
 }
