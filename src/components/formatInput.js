@@ -1,16 +1,3 @@
-<template>
-    <div class="format-input">
-        <input v-model="content"
-            :class="inputClass"
-            class="input"
-            type="tel"
-            :placeholder="placeholder"
-            :disabled="disabled"
-            @blur="onBlur" />
-    </div>
-</template>
-
-<script>
 export default {
     name: 'FormatInput',
     props: {
@@ -98,13 +85,13 @@ export default {
             this.content = this.value;
         },
     },
-}
-</script>
-
-<style lang="less">
-.format-input {
-    .input {
-        background-color: transparent;
-    }
-}
-</style>
+    template: '<div class="format-input">'
+        + '<input v-model="content" '
+        + ':class="inputClass" '
+        + 'class="input" '
+        + 'type="tel" '
+        + ':placeholder="placeholder" '
+        + ':disabled="disabled" '
+        + '@blur="onBlur" /> '
+    + '</div>',
+};

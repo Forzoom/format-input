@@ -1,5 +1,5 @@
-import FormatInput from './components/formatInput.vue';
-import 'core-js/fn/set'; // vue-runtime-helpers has es6 features `Set` in dist code
+import FormatInput from './components/formatInput';
+import 'core-js'; // vue-runtime-helpers has es6 features `Set` in dist code
 
 let installed = false;
 
