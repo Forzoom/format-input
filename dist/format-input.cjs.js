@@ -1,8 +1,11 @@
 'use strict';
 
-require('core-js/modules/es6.regexp.split');
-require('core-js/modules/es6.regexp.replace');
-require('core-js/modules/es6.number.constructor');
+require('core-js/modules/es.array.join');
+require('core-js/modules/es.array.slice');
+require('core-js/modules/es.number.constructor');
+require('core-js/modules/es.regexp.exec');
+require('core-js/modules/es.string.replace');
+require('core-js/modules/es.string.split');
 
 var FormatInput = {
   name: 'FormatInput',

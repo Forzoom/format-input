@@ -1,6 +1,6 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/modules/es6.regexp.split'), require('core-js/modules/es6.regexp.replace'), require('core-js/modules/es6.number.constructor')) :
-    typeof define === 'function' && define.amd ? define(['core-js/modules/es6.regexp.split', 'core-js/modules/es6.regexp.replace', 'core-js/modules/es6.number.constructor'], factory) :
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('core-js/modules/es.array.join'), require('core-js/modules/es.array.slice'), require('core-js/modules/es.number.constructor'), require('core-js/modules/es.regexp.exec'), require('core-js/modules/es.string.replace'), require('core-js/modules/es.string.split')) :
+    typeof define === 'function' && define.amd ? define(['core-js/modules/es.array.join', 'core-js/modules/es.array.slice', 'core-js/modules/es.number.constructor', 'core-js/modules/es.regexp.exec', 'core-js/modules/es.string.replace', 'core-js/modules/es.string.split'], factory) :
     (global = global || self, global.formatInput = factory());
 }(this, function () { 'use strict';
 

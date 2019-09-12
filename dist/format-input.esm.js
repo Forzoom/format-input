@@ -1,6 +1,9 @@
-import 'core-js/modules/es6.regexp.split';
-import 'core-js/modules/es6.regexp.replace';
-import 'core-js/modules/es6.number.constructor';
+import 'core-js/modules/es.array.join';
+import 'core-js/modules/es.array.slice';
+import 'core-js/modules/es.number.constructor';
+import 'core-js/modules/es.regexp.exec';
+import 'core-js/modules/es.string.replace';
+import 'core-js/modules/es.string.split';
 
 var FormatInput = {
   name: 'FormatInput',
