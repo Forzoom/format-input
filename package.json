@@ -25,7 +25,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "peerDependencies": {
-    "core-js": "3.x"
+    "core-js": "2.x"
   },
   "types": "./types/index.d.ts",
   "dependencies": {}
